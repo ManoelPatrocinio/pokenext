@@ -1,6 +1,7 @@
 import { PokeTypes } from "@/types/pokemon.types";
 import { GetStaticProps } from "next";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 
 interface IPokemonProps {
@@ -22,7 +23,7 @@ export async function getStaticPaths<GetStaticPaths>() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 export const getStaticProps: GetStaticProps<IPokemonProps, Params> = async (
@@ -36,6 +37,14 @@ export const getStaticProps: GetStaticProps<IPokemonProps, Params> = async (
   };
 };
 export default function Pokemon({ pokemon }: IPokemonProps) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <h1 className="text-[#333] text-2xl font-bold"> Loading...</h1>
+      </div>
+    );
+  }
   return (
     <div className="w-full flex flex-col items-center justify-center text-center">
       <h1 className="text-2xl text-[#333] font-display font-semibold capitalize  p-2 my-4  rounded w-max">
@@ -53,11 +62,11 @@ export default function Pokemon({ pokemon }: IPokemonProps) {
       </div>
       <div className="flex flex-col justify-center items-center my-4">
         <h3 className="text-[#333] font-bold text-sm mb-3">Tipo:</h3>
-        <div className="flex justify-between items-center gap-8">
+        <div className="w-[14rem]  flex justify-between items-center gap-8">
           {pokemon.types.map((item, index) => (
             <span
               key={index}
-              className={`py-2 px-3 text-white bg-[#333]   rounded uppercase text-xs   ${[
+              className={`flex-[1] py-2 px-3 text-white bg-[#333]   rounded uppercase text-xs   ${[
                 "type_" + item.type.name,
               ]}`}
             >

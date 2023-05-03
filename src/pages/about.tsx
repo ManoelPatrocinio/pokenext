@@ -17,13 +17,13 @@ export default function About() {
         buscar e visualizar as principais informações dos seus Pokémons
         favoritos.
       </p>
-      <p className="w-full text-gray-600 text-sm leading-8 indent-8">
+      <p className="w-full text-gray-600 text-sm text-justify leading-8 indent-8 ">
         Este projeto foi construído seguindo a playlist de vídeos do curso de
         Next.js do
         <a
           href="https://www.youtube.com/@MatheusBattisti"
           target="_blank"
-          className="text-sm hover:text-cyan-500 mx-1"
+          className="text-sm text-[#333] font-semibold underline hover:text-cyan-500 mx-1"
         >
           Matheus Battisti
         </a>
@@ -32,7 +32,7 @@ export default function About() {
         Também foi demonstrado como funciona o consumo de API, com a utilização
         da PokeAPI para obter as informações sobre os Pokémons.
       </p>
-      <p className="w-full text-gray-600 text-sm leading-8 indent-8">
+      <p className="w-full text-gray-600 text-sm text-justify leading-8 indent-8">
         Para mim, teve como objetivo o estudo e aprendizado prático e teórico
         dessa tecnologia, o que significa que este projeto estará em contínua
         construção e aprimoramento, de acordo com a evolução do desenvolvedor.
